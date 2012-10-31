@@ -16,9 +16,9 @@ typedef BOOL (^FilterBlock)(id obj);
 typedef id (^ReduceBlock)(id aggregation, id obj);
 
 @interface NSArray (Functional)
-- (NSArray *)mapUsingBlock:(id(^)(id))block;
-- (NSArray *)filterUsingBlock:(BOOL(^)(id))block;
-- (void)applyBlock:(void(^)(id))block;
+- (NSArray *)mapUsingBlock:(MapBlock)block;
+- (NSArray *)filterUsingBlock:(FilterBlock)block;
+- (void)applyBlock:(ApplyBlock)block;
 - (id)reduceUsingBlock:(ReduceBlock)block initialAggregation:(id)initialAggregation;
 
 @end
