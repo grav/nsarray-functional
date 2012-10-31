@@ -7,13 +7,13 @@
 
 #import <Foundation/Foundation.h>
 
-typedef id(^MapBlock)(id);
+typedef id(^MapBlock)(id obj);
 
-typedef void (^ApplyBlock)(id);
+typedef void (^ApplyBlock)(id obj);
 
-typedef BOOL (^FilterBlock)(id);
+typedef BOOL (^FilterBlock)(id obj);
 
-typedef id (^ReduceBlock)(id, id);
+typedef id (^ReduceBlock)(id aggregation, id obj);
 
 @interface NSArray (Functional)
 - (NSArray *)mapUsingBlock:(id(^)(id))block;
