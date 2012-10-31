@@ -27,38 +27,42 @@
 - (void)testFilter
 {
     NSArray *result = @[@6, @7, @8, @9, @10];
-    NSArray *test = [@[@1, @2, @3, @4, @5, @6, @7, @8, @9, @10] filterUsingBlock:^BOOL(NSNumber * o) {
+    FilterBlock largerThan5 = ^BOOL(NSNumber *o) {
         return [o intValue] > 5;
-    }];
-    STAssertEqualObjects(result, test, @"LargerThan5 should keep everything above 5");
+    };
+    NSArray *test = [@[@1, @2, @3, @4, @5, @6, @7, @8, @9, @10] filterUsingBlock:largerThan5];
+    STAssertEqualObjects(result, test, @"Everything above 5 should be kept");
 
 }
 
 - (void)testMap
 {
     NSArray *result = @[@2,@3,@4,@5];
-    NSArray *test = [@[@1, @2, @3, @4] mapUsingBlock:^NSNumber *(NSNumber *n) {
+    MapBlock addOne = ^NSNumber *(NSNumber *n) {
         return @([n intValue] + 1);
-    }];
-    STAssertEqualObjects(result, test, @"AddOne should add 1");
+    };
+    NSArray *test = [@[@1, @2, @3, @4] mapUsingBlock:addOne];
+    STAssertEqualObjects(result, test, @"1 should be added");
 }
 
 - (void)testReduce
 {
     NSNumber *result = @10;
-    NSArray *test = [@[@1, @2, @3, @4] reduceUsingBlock:^NSNumber *(NSNumber *a, NSNumber *o) {
+    ReduceBlock sum = ^NSNumber *(NSNumber *a, NSNumber *o) {
         return @([a intValue] + [o intValue]);
-    } initialAggregation:0];
-    STAssertEqualObjects(result, test, @"Sum should sum numbers");
+    };
+    NSArray *test = [@[@1, @2, @3, @4] reduceUsingBlock:sum initialAggregation:0];
+    STAssertEqualObjects(result, test, @"Numbers should be summed");
 }
 
 - (void)testApply
 {
     NSArray *in = @[@"foo",@"bar",@"baz"];
     NSMutableArray *out = [NSMutableArray array];
-    [in applyBlock:^(id o) {
+    ApplyBlock addToOut = ^(id o) {
         [out addObject:o];
-    }];
+    };
+    [in applyBlock:addToOut];
     STAssertEqualObjects(in, out, @"All objects in 'in' should be added to 'out");
 }
 
