@@ -8,5 +8,7 @@ I believe the code works on both iOS and OS X, but I have only tested it with th
 
 Some (pretty basic) unit-tests are also there, mostly for the purpose of documenting how everything works.
 
+Please do fork, change stuff, add methods, tests etc. Pull requests are welcome!
+
 TODO:
 - Make it work with CocoaPods
