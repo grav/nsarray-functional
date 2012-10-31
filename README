@@ -1,4 +1,9 @@
 Functional programming for NSArray
+
+(C) 2012 Mikkel Gravgaard
+
+Licensed under MIT License.
+
 --
 This category adds some methods from functional programming to the NSArray class.
 
