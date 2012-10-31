@@ -1,0 +1,14 @@
+Functional programming for NSArray
+--
+This category adds some methods from functional programming to the NSArray class.
+
+It's based on blocks, so you avoid NSInvocation, selectors and what not.
+
+I believe the code works on both iOS and OS X, but I have only tested it with the iOS SDK.
+
+Some (pretty basic) unit-tests are also there, mostly for the purpose of documenting how everything works.
+
+Please do fork, change stuff, add methods, tests etc. Pull requests are welcome!
+
+TODO:
+- Make it work with CocoaPods
