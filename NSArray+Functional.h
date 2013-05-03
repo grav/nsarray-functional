@@ -33,6 +33,8 @@ typedef BOOL (^FilterBlock)(id obj);
 typedef id (^ReduceBlock)(id aggregation, id obj);
 
 @interface NSArray (Functional)
++ (NSArray*)arrayByRepeatingObject:(id)obj times:(NSUInteger)t;
++ (NSArray*)arrayWithRange:(NSUInteger)rangeLength;
 - (NSArray *)mapUsingBlock:(MapBlock)block;
 - (NSArray *)mapWithIndexUsingBlock:(MapWithIndexBlock)block;
 - (NSArray *)filterUsingBlock:(FilterBlock)block;

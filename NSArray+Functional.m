@@ -21,6 +21,23 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #import "NSArray+Functional.h"
 @implementation NSArray (Functional)
+// from http://stackoverflow.com/a/2878858/202538
+
++ (NSArray*)arrayByRepeatingObject:(id)obj times:(NSUInteger)t {
+    id arr[t];
+    for(NSUInteger i=0; i<t; ++i)
+        arr[i] = obj;
+    return [NSArray arrayWithObjects:arr count:t];
+}
+
++ (NSArray *)arrayWithRange:(NSUInteger)rangeLength {
+    id arr[rangeLength];
+    for(NSUInteger i=0; i<rangeLength; ++i)
+        arr[i] = @(i);
+    return [NSArray arrayWithObjects:arr count:rangeLength];
+}
+
+
 - (NSArray *)mapUsingBlock:(MapBlock )block{
     NSMutableArray *a = [NSMutableArray arrayWithCapacity:[self count]];
     for(id o in self){
@@ -60,6 +77,4 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     }
     return aggregation;
 }
-
-
 @end
