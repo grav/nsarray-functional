@@ -29,6 +29,16 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     return a;
 }
 
+- (NSArray *)mapWithIndexUsingBlock:(MapWithIndexBlock)block{
+    NSMutableArray *a = [NSMutableArray arrayWithCapacity:[self count]];
+    NSUInteger idx=0;
+    for(id o in self){
+        [a addObject:block(o,idx)];
+        idx++;
+    }
+    return a;
+}
+
 - (NSArray *)filterUsingBlock:(FilterBlock)block {
     NSIndexSet *indexSet = [self indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
         return block(obj);

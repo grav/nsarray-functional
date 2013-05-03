@@ -24,6 +24,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 typedef id(^MapBlock)(id obj);
 
+typedef id(^MapWithIndexBlock)(id obj, NSUInteger idx);
+
 typedef void (^ApplyBlock)(id obj);
 
 typedef BOOL (^FilterBlock)(id obj);
@@ -32,6 +34,7 @@ typedef id (^ReduceBlock)(id aggregation, id obj);
 
 @interface NSArray (Functional)
 - (NSArray *)mapUsingBlock:(MapBlock)block;
+- (NSArray *)mapWithIndexUsingBlock:(MapWithIndexBlock)block;
 - (NSArray *)filterUsingBlock:(FilterBlock)block;
 - (void)applyBlock:(ApplyBlock)block;
 - (id)reduceUsingBlock:(ReduceBlock)block initialAggregation:(id)initialAggregation;
